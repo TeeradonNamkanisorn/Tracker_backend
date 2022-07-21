@@ -1,6 +1,6 @@
 "use strict";
 
-const { users } = require("../seedData");
+const { users, records } = require("../seedData");
 
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -21,9 +21,14 @@ module.exports = {
         `SELECT * FROM USERS WHERE email = "${users[0].email}";`,
         { transaction }
       );
-      console.log(myUsers);
       const testUserId = myUsers[0][0].id;
-      console.log(testUserId);
+
+      const seedRecord = records.map((record) => ({
+        ...record,
+        userId: testUserId,
+      }));
+
+      await queryInterface.bulkInsert("Records", seedRecord, { transaction });
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();
