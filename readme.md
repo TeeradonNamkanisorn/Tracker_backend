@@ -22,5 +22,5 @@
 After seeding, the user provided below should be available. 20 records were created for the test user, 15 of which records were set to today and 5 of which were on July 1-2. Enter the following email and password on the login screen.
 
 username : "Test Man",
-email: "test@gmail.com",
+email: "tester@gmail.com",
 password: "Abcde12345"
